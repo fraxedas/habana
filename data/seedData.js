@@ -9,11 +9,11 @@
     data.providers = [
         {
             name: 'Google',
-            url: '/oauth/google/oauth'                
+            url: '/oauth/google/auth'                
         },
         {
             name: 'Facebook',
-            url: '/oauth/facebook/oauth'                
+            url: '/oauth/facebook/auth'                
         }
     ];
 

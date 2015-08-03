@@ -6,11 +6,10 @@
 	
 	oauth.init = function(app){
 				
-		app.get('/oauth/google/auth/:client_id', function(req, res){
-			var client_id = req.params.client_id;
-			var client_secret = persist.getItem(client_id);
-			var redirect_url = req.protocol + '://' + req.get('host') + '/oauth/google/callback';
-			var url = google_api.get_auth_url(client_id, client_secret, redirect_url);
+		app.get('/oauth/google/auth', function(req, res){
+			var google = persist.getItem('google');
+			var redirect_url = redirect(req);
+			var url = google_api.get_auth_url(google.client_id, google.client_secret, redirect_url);
 			
 			console.log(url);
 			res.redirect(url);
@@ -18,28 +17,81 @@
 		
 		app.get('/oauth/google/callback', function(req, res){
 			var code = req.query.code;
+			var google = persist.getItem('google');
+			var redirect_url = redirect(req);
 			
-			console.log(code);
+			google_api.get_tokens(google.client_id, google.client_secret, redirect_url, code, function(err, tokens){
+				console.log(err);
+				if(err) {
+	               res.render("error", {error: 'Something failed while authenticating with google', body: err});				             
+	            }
+	            else{
+	                google.tokens = tokens;
+					persist.setItem('google', google);
+					res.redirect('/oauth/google/' + google.client_id); 
+	            }
+			});			
+		});
+		
+		app.get('/google/post/:text', function(req, res){
+			var text = req.params.text;
+			var google = persist.getItem('google');
+			var redirect_url = redirect(req);
 			
-			res.send('OK');
+			google_api.insert(google.client_id, google.client_secret, redirect_url, google.tokens.access_token, text, function(err, response){
+				console.log(err);
+				if(err) {
+	               res.render("error", {error: 'Something failed while posting to google', body: err});				             
+	            }
+	            else{
+	                res.send(response); 
+	            }
+			});			
+		});
+		
+		app.get('/google/me', function(req, res){
+			var google = persist.getItem('google');
+			var redirect_url = redirect(req);
+			
+			google_api.me(google.client_id, google.client_secret, redirect_url, google.tokens.access_token, function(err, response){
+				console.log(err);
+				if(err) {
+	               res.render("error", {error: 'Something failed while posting to google', body: err});				             
+	            }
+	            else{
+	                res.send(response); 
+	            }
+			});			
 		});
 		
 		app.post('/oauth/google/:client_id/:client_secret', function(req, res){
 	        var client_id = req.params.client_id;
 	        var client_secret = req.params.client_secret;
-	        persist.setItem(client_id,client_secret);
+	        persist.setItem('google',
+				{
+					client_id: client_id, 
+					client_secret: client_secret
+				});
 	                
 	        res.redirect('/oauth/google/' + client_id);
 	    });
 		
 		app.get('/oauth/google/:client_id', function(req, res){
 	        var client_id = req.params.client_id;
-	                
-	        res.send({
-	            client_id: client_id,
-	            client_secret: persist.getItem(client_id)
-	        });
+	        var google = persist.getItem('google');
+			
+			if(google && (google.client_id === client_id)){
+				res.send(google);
+			}
+			else{
+				res.status(404).send();
+			}     
+	        
 	    });
+		
+		var redirect = function(req) {
+	        return req.protocol + '://' + req.get('host') + '/oauth/google/callback';
+	    };   
 		
 	};	
 	
