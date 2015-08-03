@@ -10,8 +10,6 @@
 			var google = persist.getItem('google');
 			var redirect_url = redirect(req);
 			var url = google_api.get_auth_url(google.client_id, google.client_secret, redirect_url);
-			
-			console.log(url);
 			res.redirect(url);
 		});
 		
@@ -21,14 +19,13 @@
 			var redirect_url = redirect(req);
 			
 			google_api.get_tokens(google.client_id, google.client_secret, redirect_url, code, function(err, tokens){
-				console.log(err);
 				if(err) {
 	               res.render("error", {error: 'Something failed while authenticating with google', body: err});				             
 	            }
 	            else{
 	                google.tokens = tokens;
 					persist.setItem('google', google);
-					res.redirect('/oauth/google/' + google.client_id); 
+					res.render("google", {title: 'Google oauth is done'});
 	            }
 			});			
 		});
@@ -39,9 +36,9 @@
 			var redirect_url = redirect(req);
 			
 			google_api.insert(google.client_id, google.client_secret, redirect_url, google.tokens.access_token, text, function(err, response){
-				console.log(err);
 				if(err) {
-	               res.render("error", {error: 'Something failed while posting to google', body: err});				             
+					console.log(err);
+					res.render("error", {error: 'Something failed while posting to google', body: err});				             
 	            }
 	            else{
 	                res.send(response); 
@@ -54,7 +51,6 @@
 			var redirect_url = redirect(req);
 			
 			google_api.me(google.client_id, google.client_secret, redirect_url, google.tokens.access_token, function(err, response){
-				console.log(err);
 				if(err) {
 	               res.render("error", {error: 'Something failed while posting to google', body: err});				             
 	            }
