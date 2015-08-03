@@ -2,7 +2,8 @@
 
     data.author = {
         name: 'Oscar Fraxedas', 
-        email: 'fraxedas@gmail.com'
+        email: 'fraxedas@gmail.com',
+        website: 'https://github.com/fraxedas'
     };
 
 
