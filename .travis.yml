@@ -1,3 +1,10 @@
 language: node_js
 node_js:
 - 0.10.36
+deploy:
+  provider: heroku
+  api_key:
+    secure: HPjEmUIpESpdV7QSPNGn0FzskiZ02A6WoCKdQYHUhNhrUePdT2k1oPgtd8rsfPZJMISdS8O1BmwOZj0RDmkBC11SRp40czorPOhHrgocyBiVTlXrjEpzpdM4y4jE/rgqD79yZHKWuFEW0quEXjeGEQ5cf6jZjkGpIPqfR7Tn+irkpN5RuQ7zD+J8GVHMwZBy5fWGqtaYhyIq3zV/Toc3UgQbcb0jElJCfoW2vCS51rBIaU2ASzLjGWlWsONEZX+jYX8nItIvnvJq+cFFjE8P8lIemURwEn14JSPCJW0vKBZwRWT2qOegJlYPf5s00GF1bJgAVhllQC3WXZFpRNP/LaObO2eQshs/5eRUL/7aLTjbu6Jel8arP+JnSZXxa0gcbrfvRqMY6e2jmAKlKXa8IxZUEN9qPy1E9PfqrcZ2yEIAOVIzhc6o46toyb+WEsQalFXPRM1e4KwN6lWILP6gno7wx9D0qLxqsBRI4/Xf/hqp2dxzeR6dnvTN7hzP+VkUI44A8hZ0Pai5hQsEUrjr732lTM8wR90j5NYSjGSOXrO+9un00LxPuYuwQr/mzeihPnvMZIT/YNn0b3xycAvAuTPqDiSAjk/BVLzGLXABwuQBAFEaf2UdViieNqPt/ODYIiDXJyty22T00ukMBpNsC21YUcq6r1ko9SQnoibYYJk=
+  app: habana
+  on:
+    repo: fraxedas/habana
