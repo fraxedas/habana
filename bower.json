@@ -1,0 +1,27 @@
+{
+  "name": "habana",
+  "version": "1.0.0",
+  "homepage": "https://github.com/fraxedas/habana",
+  "authors": [
+    "Oscar Fraxedas <fraxedas@gmail.com>"
+  ],
+  "description": "Avoid social media fatigue",
+  "main": "server.js",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4",
+    "underscore": "~1.8.3"
+  }
+}

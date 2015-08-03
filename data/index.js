@@ -5,6 +5,10 @@
     data.get_author = function() {
         return seedData.author;
     };
+    
+    data.get_providers = function() {
+        return seedData.providers;
+    };
 
     data.get_app = function(name, next) {
         database.getDb(function(err, db) {
