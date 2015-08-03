@@ -1,7 +1,7 @@
 {
-  "name": "nodejs",
+  "name": "habana",
   "version": "1.0.0",
-  "description": "Playing with node",
+  "description": "Avoid social media fatigue",
   "main": "server.js",
   "dependencies": {
     "express": "^4.11.1",
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/fraxedas/havana.git"
+    "url": "https://github.com/fraxedas/habana.git"
   },
   "keywords": [
     "publish",
@@ -34,7 +34,7 @@
   "author": "Oscar Fraxedas",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fraxedas/havana/issues"
+    "url": "https://github.com/fraxedas/habana/issues"
   },
-  "homepage": "https://github.com/fraxedas/havana"
+  "homepage": "https://github.com/fraxedas/habana"
 }
