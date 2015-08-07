@@ -30,12 +30,11 @@
 			});			
 		});
 		
-		app.get('/google/post/:text', function(req, res){
-			var text = req.params.text;
+		app.get('/google/list', function(req, res){
 			var google = persist.getItem('google');
 			var redirect_url = redirect(req);
 			
-			google_api.insert(google.client_id, google.client_secret, redirect_url, google.tokens.access_token, text, function(err, response){
+			google_api.list(google.client_id, google.client_secret, redirect_url, google.tokens.access_token, function(err, response){
 				if(err) {
 					console.log(err);
 					res.render("error", {error: 'Something failed while posting to google', body: err});				             
