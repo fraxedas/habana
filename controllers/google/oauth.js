@@ -25,7 +25,7 @@
 	            else{
 	                google.tokens = tokens;
 					persist.setItem('google', google);
-					res.render("google", {title: 'Google oauth is done'});
+					res.render("google/google", {title: 'Google oauth is done'});
 	            }
 			});			
 		});
