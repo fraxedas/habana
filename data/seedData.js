@@ -12,6 +12,10 @@
             url: '/oauth/google/auth'                
         },
         {
+            name: 'Twitter',
+            url: '/oauth/twitter/auth'                
+        },
+        {
             name: 'Facebook',
             url: '/oauth/facebook/auth'                
         }

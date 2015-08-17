@@ -9,6 +9,7 @@
     "mongodb": "^1.4.30",
     "node-persist": "0.0.3",
     "request": "^2.60.0",
+    "twitter-node-client": "0.0.6",
     "vash": "^0.7.12-1"
   },
   "devDependencies": {

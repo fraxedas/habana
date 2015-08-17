@@ -30,31 +30,6 @@
 			});			
 		});
 		
-		app.post('/oauth/google/:client_id/:client_secret', function(req, res){
-	        var client_id = req.params.client_id;
-	        var client_secret = req.params.client_secret;
-	        persist.setItem('google',
-				{
-					client_id: client_id, 
-					client_secret: client_secret
-				});
-	                
-	        res.redirect('/oauth/google/' + client_id);
-	    });
-		
-		app.get('/oauth/google/:client_id', function(req, res){
-	        var client_id = req.params.client_id;
-	        var google = persist.getItem('google');
-			
-			if(google && (google.client_id === client_id)){
-				res.send(google);
-			}
-			else{
-				res.status(404).send();
-			}     
-	        
-	    });
-		
 		var redirect = function(req) {
 	        return req.protocol + '://' + req.get('host') + '/oauth/google/callback';
 	    };   
