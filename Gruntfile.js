@@ -1,12 +1,12 @@
 module.exports = function(grunt) {
-
+    var files = ['lib/**/*.js', 'test/**/*.js', 'data/**/*.js', 'views/**/*.js', 'controllers/**/*.js'];
     // Project configuration.
     grunt.initConfig({
         jshint: {
-            files: ['test/**/*.js', 'data/**/*.js', 'views/**/*.js', 'controllers/**/*.js']
+            files: files
         },
         watch: {
-            files: ['test/**/*.js', 'data/**/*.js', 'views/**/*.js', 'controllers/**/*.js'],
+            files: files,
             tasks : ['jshint']
         }
     });
