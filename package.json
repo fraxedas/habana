@@ -4,6 +4,7 @@
   "description": "Avoid social media fatigue",
   "main": "server.js",
   "dependencies": {
+    "body-parser": "^1.13.3",
     "crypto": "0.0.3",
     "express": "^4.11.1",
     "googleapis": "^2.1.3",

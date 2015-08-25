@@ -5,7 +5,15 @@
 			<h1>@model.title</h1>
 		
 		</div>
-		 
+		
+		<form id="twitter" action="/twitter/post" method="post">
+			<div>
+				<label>Post:</label>
+				<input id="post" type="text" name="post" placeholder="Post"/>
+				<input type="submit" class="btn btn-primary btn-sm" value="Submit"/>
+			</div>
+		</form>
+	 
 		@model.posts.forEach(function(item){
 			@if(item){
 				<div class="list-group">
