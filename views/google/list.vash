@@ -6,7 +6,6 @@
 
 		</div>
 		
-		
 		@model.posts.forEach(function(item){
 				<div class="list-group">
 					<a href="@item.url" class="list-group-item active">

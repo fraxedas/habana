@@ -11,7 +11,7 @@
 			var redirect_url = redirect(req);
 			var format = req.query.format;
 			
-			twitter_api.list(twitter.client_id, twitter.client_secret, twitter.access_token, twitter.access_token_secret, redirect_url, function(err, response){
+			twitter_api.list(twitter.client_id, twitter.client_secret, twitter.request.oauth_access_token, twitter.request.oauth_access_token_secret, redirect_url, function(err, response){
 				if(err) {
 	               res.render("error", {error: 'Something failed while reading from twitter', body: err});				             
 	            }

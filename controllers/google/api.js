@@ -13,7 +13,7 @@
 			google_api.list(google.client_id, google.client_secret, redirect_url, google.tokens.access_token, function(err, response){
 				if(err) {
 					console.log(err);
-					res.render("error", {error: 'Something failed while posting to google', body: err});	             
+					res.render("error", {error: 'Something failed while reading from google', body: err});	             
 	            }
 	            else{
 	                res.render("google/list", {title: response.title, posts: response.items});
@@ -27,7 +27,7 @@
 			
 			google_api.me(google.client_id, google.client_secret, redirect_url, google.tokens.access_token, function(err, response){
 				if(err) {
-	               res.render("error", {error: 'Something failed while posting to google', body: err});				             
+	               res.render("error", {error: 'Something failed while reading from google', body: err});				             
 	            }
 	            else{
 	                res.send(response); 
