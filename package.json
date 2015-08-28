@@ -12,6 +12,7 @@
     "node-persist": "0.0.3",
     "node-uuid": "^1.4.3",
     "oauth": "^0.9.13",
+    "passport": "^0.3.0",
     "passport-facebook": "^2.0.0",
     "request": "^2.61.0",
     "twitter-node-client": "0.0.6",
