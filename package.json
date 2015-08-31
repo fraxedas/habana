@@ -14,6 +14,7 @@
     "oauth": "^0.9.13",
     "passport": "^0.3.0",
     "passport-facebook": "^2.0.0",
+    "qs": "^5.0.0",
     "request": "^2.61.0",
     "twitter-node-client": "0.0.6",
     "vash": "^0.7.12-1"
