@@ -14,25 +14,25 @@
 		});
 
 		app.get('/oauth/facebook/callback', function (req, res) {
-			var oauth_token = req.query.oauth_token;
-			var oauth_verifier = req.query.oauth_verifier;
+			res.render("facebook/callback", { title: 'facebook oauth is almost done', location: '/oauth/facebook/callback/client'});
+		});
 
+		app.get('/oauth/facebook/callback/client', function (req, res) {
+			var access_token = req.query.access_token;
+			var expires_in = req.query.expires_in;
+			
 			var facebook = persist.getItem('facebook');
-			facebook.request.oauth_verifier = oauth_verifier;
+			facebook.access_token = access_token;
+			facebook.expires_in = expires_in;
 
-			var redirect_url = redirect(req);
+			if (!access_token) {
+				res.render("error", { error: 'Something failed while authenticating with facebook', body: 'Please contact the developer' });
+			}
+			else {
+				persist.setItem('facebook', facebook);
+				res.render("facebook/facebook", { title: 'facebook oauth is done' });
+			}
 
-			facebook_api.get_access_token(facebook.client_id, facebook.client_secret, redirect_url, facebook.request.oauth_token, facebook.request.oauth_token_secret, facebook.request.oauth_verifier, function (err, tokens) {
-				if (err) {
-					res.render("error", { error: 'Something failed while authenticating with facebook', body: err });
-				}
-				else {
-					facebook.request.oauth_access_token = tokens.oauth_access_token;
-					facebook.request.oauth_access_token_secret = tokens.oauth_access_token_secret;
-					persist.setItem('facebook', facebook);
-					res.render("facebook/facebook", { title: 'facebook oauth is done' });
-				}
-			});
 		});
 
 		var redirect = function (req) {

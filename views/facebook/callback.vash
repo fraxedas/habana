@@ -6,11 +6,9 @@
 
 		</div>
 		
-		<div class="list-group">
-			<a href="/twitter/list" class="list-group-item active">
-	    		List posts
-	    	</a>
-	    </div>		
+		<script type="text/javascript">
+			window.location.replace('@model.location' + '?' + window.location.hash.split('#')[1]);
+		</script>		
 
 	})
 })

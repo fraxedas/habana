@@ -6,7 +6,7 @@
 		
 		</div>
 		
-		<form id="twitter" action="/twitter/post" method="post">
+		<form id="twitter" action="/facebook/post" method="post">
 			<div>
 				<label>Post:</label>
 				<input id="post" type="text" name="post" placeholder="Post"/>
