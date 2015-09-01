@@ -8,10 +8,9 @@
 
 		app.get('/facebook/list', function (req, res) {
 			var facebook = persist.getItem('facebook');
-			var redirect_url = redirect(req);
 			var format = req.query.format;
 
-			facebook_api.list(facebook.client_id, facebook.client_secret, facebook.request.oauth_access_token, facebook.request.oauth_access_token_secret, redirect_url, function (err, response) {
+			facebook_api.list(facebook.access_token, function (err, response) {
 				if (err) {
 					res.render("error", { error: 'Something failed while reading from facebook', body: err });
 				}
@@ -26,11 +25,9 @@
 
 		app.post('/facebook/post', function (req, res) {
 			var facebook = persist.getItem('facebook');
-			var redirect_url = redirect(req);
-			console.log(req);
 			var post = req.body.post;
 
-			facebook_api.post(facebook.client_id, facebook.client_secret, facebook.request.oauth_access_token, facebook.request.oauth_access_token_secret, redirect_url, post, function (err, response) {
+			facebook_api.post(facebook.access_token, post, function (err, response) {
 				if (err) {
 					res.render("error", { error: 'Something failed while posting to facebook', body: err });
 				}
@@ -39,10 +36,6 @@
 				}
 			});
 		});
-
-		var redirect = function (req) {
-			return req.protocol + '://' + req.get('host') + '/oauth/facebook/callback';
-		};
 
 	};
 

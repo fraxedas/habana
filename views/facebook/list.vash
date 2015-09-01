@@ -18,7 +18,7 @@
 			@if(item){
 				<div class="list-group">
 					<a href="#" class="list-group-item active">
-			    		@item.text
+			    		@item.message @item.story
 			    	</a>
 			    </div>
 			}

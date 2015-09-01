@@ -14,21 +14,21 @@
 		});
 
 		app.get('/oauth/facebook/callback', function (req, res) {
-			res.render("facebook/callback", { title: 'facebook oauth is almost done', location: '/oauth/facebook/callback/client'});
+			res.render("facebook/callback", { title: 'facebook oauth is almost done', location: '/oauth/facebook/callback/client' });
 		});
 
 		app.get('/oauth/facebook/callback/client', function (req, res) {
 			var access_token = req.query.access_token;
 			var expires_in = req.query.expires_in;
-			
+
 			var facebook = persist.getItem('facebook');
-			facebook.access_token = access_token;
-			facebook.expires_in = expires_in;
 
 			if (!access_token) {
 				res.render("error", { error: 'Something failed while authenticating with facebook', body: 'Please contact the developer' });
 			}
 			else {
+				facebook.access_token = access_token;
+				facebook.expires_in = expires_in;
 				persist.setItem('facebook', facebook);
 				res.render("facebook/facebook", { title: 'facebook oauth is done' });
 			}
