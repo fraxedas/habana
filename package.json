@@ -1,6 +1,6 @@
 {
   "name": "habana",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "Avoid social media fatigue",
   "main": "server.js",
   "dependencies": {
