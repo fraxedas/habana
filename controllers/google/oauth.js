@@ -23,7 +23,7 @@
 	               res.render("error", {error: 'Something failed while authenticating with google', body: err});				             
 	            }
 	            else{
-	                google.tokens = tokens;
+	                google.tokens = tokens;	
 					persist.setItem('google', google);
 					res.render("google/google", {title: 'Google oauth is done'});
 	            }

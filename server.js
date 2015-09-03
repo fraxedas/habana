@@ -1,11 +1,13 @@
 /// <reference path="typings/node/node.d.ts"/>
 
 var http = require("http");
+var cookies = require( "cookies" );
 var express = require("express");
 var bodyParser = require('body-parser');
 var app = express();
 
-var controllers = require("./controllers");
+//Add cookie support as a middleware layer
+app.use( cookies.express());
 
 //Setup the view engine
 app.set("view engine", "vash");
@@ -20,6 +22,7 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + "/public"));
 
 //Setup the routes
+var controllers = require("./controllers");
 controllers.init(app);
 
 //Create the server

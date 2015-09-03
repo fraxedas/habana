@@ -1,0 +1,11 @@
+@html.extend("layout", function(model){
+	@html.block("body", function(model){
+		<div class="jumbotron">
+
+			<h1>@model.title</h1>
+
+		</div>
+		
+		@model.user
+	})
+})
