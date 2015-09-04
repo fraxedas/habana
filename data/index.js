@@ -10,12 +10,12 @@
         return seedData.providers;
     };
 
-    data.get_app = function(name, next) {
+    data.get_session = function(session_id, next) {
         database.getDb(function(err, db) {
             if(err){
                 next(err);
             }else{
-                db.apps.findOne({name: name}, next);
+                db.sessions.findOne({id: session_id}, next);
             }
         });
     };

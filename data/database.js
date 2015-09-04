@@ -2,7 +2,7 @@
 	var mongodb = require("mongodb");
 
     //local url or heroku
-    var mongodbUrl = process.env.MONGOLAB_URI || "mongodb://localhost:27017/nebula";
+    var mongodbUrl = process.env.MONGOLAB_URI || "mongodb://localhost:27017/habana";
 
     var theDb = null;
 
@@ -15,7 +15,8 @@
                 }else{
                     theDb = {
                         db:db,
-                        apps: db.collection("apps")
+                        sessions: db.collection("sessions"),
+                        accounts: db.collection("accounts")                        
                     };
                     next(null, theDb);
                 }
