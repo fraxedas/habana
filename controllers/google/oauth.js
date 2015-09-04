@@ -3,6 +3,7 @@
 	var persist = require('node-persist');
     persist.initSync();
 	var google_api = require('../../lib/google-api');
+	var cookies = require("../../lib/cookies");
 	
 	oauth.init = function(app){
 				
@@ -23,9 +24,10 @@
 	               res.render("error", {error: 'Something failed while authenticating with google', body: err});				             
 	            }
 	            else{
-	                google.tokens = tokens;	
+					google.tokens = tokens;	
 					persist.setItem('google', google);
-					res.render("google/google", {title: 'Google oauth is done'});
+					cookies.set(res, google);
+	                res.render("google/google", {title: 'Google oauth is done'});
 	            }
 			});			
 		});

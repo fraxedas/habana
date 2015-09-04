@@ -1,8 +1,8 @@
 (function (homeController) {
 	var data = require("../../data");
+	var cookies = require("../../lib/cookies");
 
 	homeController.init = function (app) {
-		var cookie = 'user';
 		
 		app.get("/signin", function (req, res) {
 			res.render("home/index", {
@@ -12,12 +12,12 @@
 		});
 		
 		app.get("/signout", function (req, res) {
-			res.cookies.set(cookie, null);
+			cookies.clear(res);
 			res.redirect("/signin");
 		});
 		
 		app.get("/", function (req, res) {
-			var user = req.cookies.get('user');
+			var user = cookies.get(req);
 			
 			if(user){
 				res.render("home/home", {
