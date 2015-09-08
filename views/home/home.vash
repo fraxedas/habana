@@ -6,6 +6,6 @@
 
 		</div>
 		
-		@model.user
+		@model.session
 	})
 })
