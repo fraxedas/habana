@@ -6,13 +6,13 @@
 	authentication.init = function (app) {
 
 		var bypass = function (req, res, next) {
-			req.noauth = true;
+			req.no_auth = true;
 			next();
 		};
 
 		var authenticate = function (req, res, next) {
 			
-			if (req.noauth) {
+			if (req.no_auth) {
 				next();
 			}
 			else {
@@ -20,7 +20,7 @@
 
 				if (user) {
 					data.get_session(user.session_id, function (err, session) {
-						if (err) {
+						if (err || session === null || user.session_id !== session.id) {
 							res.redirect("/auth/signin");
 						}
 						else {
@@ -40,12 +40,7 @@
 		app.all("/oauth/*", bypass);
 
 		app.all("/*", authenticate);
-
-		app.use(function (err, req, res, next) {
-			console.error(err.stack);
-			res.render("error", { error: 'Something failed', body: err });
-		});
-
+		
 	};
 
 

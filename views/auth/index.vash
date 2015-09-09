@@ -6,7 +6,7 @@
 
 		</div>
 		
-		@html.include("home/signin", model);
+		@html.include("auth/signin", model);
 
 	})
 })

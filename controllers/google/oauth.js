@@ -34,7 +34,7 @@
 						}
 						else {
 							cookies.set(res, {
-								session_id: session._id,
+								session_id: session.id,
 								provider_name: 'google'
 							});
 							res.render("google/google", { title: 'Google oauth is done' });
