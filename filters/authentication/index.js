@@ -10,17 +10,33 @@
 			next();
 		};
 
+		var logout = function (req, res, next) {
+			req.no_auth = true;
+
+			var session_id = cookies.get(req);
+
+			if (session_id) {
+				cookies.clear(res);
+				data.delete_session(session_id, function (err, session) {
+					next();
+				});
+			} 
+			else {
+				next();
+			}
+		};
+
 		var authenticate = function (req, res, next) {
-			
+
 			if (req.no_auth) {
 				next();
 			}
 			else {
-				var user = cookies.get(req);
+				var session_id = cookies.get(req);
 
-				if (user) {
-					data.get_session(user.session_id, function (err, session) {
-						if (err || session === null || user.session_id !== session.id) {
+				if (session_id) {
+					data.get_session(session_id, function (err, session) {
+						if (err || session === null || session_id !== session.id) {
 							res.redirect("/auth/signin");
 						}
 						else {
@@ -35,12 +51,12 @@
 			}
 		};
 
-		app.all("/auth/*", bypass);
+		app.all("/auth/*", logout);
 
 		app.all("/oauth/*", bypass);
 
 		app.all("/*", authenticate);
-		
+
 	};
 
 

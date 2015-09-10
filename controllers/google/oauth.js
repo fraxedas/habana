@@ -33,10 +33,7 @@
 							res.render("error", { error: 'Something failed', body: err });
 						}
 						else {
-							cookies.set(res, {
-								session_id: session.id,
-								provider_name: 'google'
-							});
+							cookies.set(res, session.id);
 							res.render("google/google", { title: 'Google oauth is done' });
 						}
 					});

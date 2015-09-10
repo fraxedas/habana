@@ -6,6 +6,6 @@
 
 		</div>
 		
-		@model.session
+		@model.session.provider
 	})
 })
