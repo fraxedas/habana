@@ -1,0 +1,16 @@
+{
+    "version": "0.1.0",
+    "command": "mocha",
+    "isShellCommand": true,
+    "tasks": [
+         {
+            "taskName": "test",
+            "isTestCommand": true,
+            "showOutput": "silent",
+            "problemMatcher": "$tsc",
+            "args": [
+                ""
+            ]
+        }
+    ]
+}
