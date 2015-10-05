@@ -3,6 +3,32 @@
 
 	oauth.init = function (app) {
 
+		app.delete('/oauth/secret/:provider/:client_id', function (req, res) {
+			var provider_name = req.params.provider;
+			var client_id = req.params.client_id;
+			
+			data.get_provider(provider_name, function (err, existing){
+				if (err) {
+					res.status(500).send(err);
+				}
+				else {
+					if (existing && existing.client_id === client_id) {
+						data.delete_provider(provider_name, function (err, session) {
+				            if (err) {
+                                res.status(500).send(err);
+                            }
+                            else {
+                                res.status(204).send();
+                            }
+			             });
+					}
+					else {
+						res.status(404).send();
+					}
+				}
+			});
+		});
+		
 		app.post('/oauth/secret/:provider/:client_id/:client_secret', function (req, res) {
 			var provider_name = req.params.provider;
 			var client_id = req.params.client_id;
@@ -18,7 +44,7 @@
 					res.status(500).send(err);
 				}
 				else {
-					res.redirect('/oauth/secret/' + provider + '/' + client_id);
+					res.redirect('/oauth/secret/' + provider_name + '/' + client_id);
 				}
 			});
 		});
