@@ -21,6 +21,10 @@ app.use(bodyParser.json());
 //Set the public static resource folder
 app.use(express.static(__dirname + "/public"));
 
+//Setup the schedule
+var schedule = require("./lib/schedule");
+schedule.init();
+
 //Setup the filters
 var filters = require("./filters");
 filters.init(app);
