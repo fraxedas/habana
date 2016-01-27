@@ -1,6 +1,6 @@
 {
   "name": "habana",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Avoid social media fatigue",
   "main": "server.js",
   "dependencies": {
@@ -46,5 +46,8 @@
   "bugs": {
     "url": "https://github.com/fraxedas/habana/issues"
   },
-  "homepage": "https://github.com/fraxedas/habana"
+  "homepage": "https://github.com/fraxedas/habana",
+  "engines": {
+    "node": "5.3.0"
+  }
 }
