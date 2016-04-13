@@ -7,7 +7,6 @@
     "body-parser": "^1.15.0",
     "cookies": "^0.6.1",
     "cron": "^1.1.0",
-    "crypto": "0.0.3",
     "express": "^4.13.4",
     "fb": "^1.0.2",
     "googleapis": "^4.0.0",
@@ -15,7 +14,6 @@
     "node-persist": "0.0.11",
     "oauth": "^0.9.14",
     "qs": "^6.1.0",
-    "request": "^2.70.0",
     "twitter-node-client": "0.0.6",
     "vash": "^0.11.3"
   },
@@ -24,9 +22,7 @@
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-coveralls": "^1.0.0",
-    "jshint": "^2.9.1",
-    "mocha": "^2.4.5",
-    "should": "^8.3.0"
+    "mocha": "^2.4.5"
   },
   "scripts": {
     "test": "mocha",

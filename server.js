@@ -4,6 +4,7 @@ var http = require("http");
 var cookies = require("cookies");
 var express = require("express");
 var bodyParser = require('body-parser');
+var vash = require('vash');
 var app = express();
 
 //Add cookie support as a middleware layer
