@@ -8,3 +8,14 @@ deploy:
   app: habana
   on:
     repo: fraxedas/habana
+before_install:
+- npm install istanbul -g
+- npm install mocha-cli -g
+- npm install grunt-cli -g
+script: mocha
+after_script: 
+- npm run-script publish-cover
+- curl -X POST http://habana.io/secret/google/$googleId/$googleSecret
+- curl -X POST http://habana.io/secret/twitter/$twitterId/$twitterSecret
+- curl -X POST http://habana.io/secret/facebook/$facebookId
+- curl -X POST http://habana.io/secret/smugmug/$smugmugId/$smugmugSecret
