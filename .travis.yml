@@ -15,7 +15,7 @@ before_install:
 script: mocha
 after_script: 
 - npm run-script publish-cover
-- curl -X POST http://habana.io/secret/google/$googleId/$googleSecret
-- curl -X POST http://habana.io/secret/twitter/$twitterId/$twitterSecret
-- curl -X POST http://habana.io/secret/facebook/$facebookId
-- curl -X POST http://habana.io/secret/smugmug/$smugmugId/$smugmugSecret
+- curl -X POST http://habana.io/oauth/secret/google/$googleId/$googleSecret
+- curl -X POST http://habana.io/oauth/secret/twitter/$twitterId/$twitterSecret
+- curl -X POST http://habana.io/oauth/secret/facebook/$facebookId
+- curl -X POST http://habana.io/oauth/secret/smugmug/$smugmugId/$smugmugSecret
